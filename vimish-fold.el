@@ -243,7 +243,7 @@ This includes fringe bitmaps and faces."
   "Fold active region staring at BEG, ending at END."
   (interactive "r")
   (deactivate-mark)
-  (cl-destructuring-bind (beg . end) (vimish-fold--correct-region beg end)
+  (cl-destructuring-bind (beg . end) (vimish-fold--correct-region beg (- end 1))
     (when (< (count-lines beg end) 2)
       (error "Nothing to fold"))
     (dolist (overlay (overlays-in beg end))
